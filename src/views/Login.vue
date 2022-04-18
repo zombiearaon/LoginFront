@@ -1,27 +1,32 @@
 <template>
     <div v-if="LoginType">
         <h1>登录</h1>
-        <input v-model="userName" placeholder="请输入用户名">
-        <input type="password" v-model="password" placeholder="请输入密码">
-        <button @click="HandleLogin(userName,password)">登录</button>
+        <input v-model="LoginInfo.username" placeholder="请输入用户名">
+        <input type="password" v-model="LoginInfo.password" placeholder="请输入密码">
+        <button @click="HandleLogin(LoginInfo)">登录</button>
     </div>
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
+import {Login} from '../request/Login'
     export default {
         name: "Login",
         setup(){
-            let userName = '';
-            let password = '';
+            let LoginInfo = {
+                username : '',
+                password : ''
+            }
+             
             let LoginType = true;
             
-            function HandleLogin(userName,password){
-                console.log(userName,password);
+            function HandleLogin(LoginInfo){
+                console.log(LoginInfo);
+                Login(LoginInfo).then(res=>{
+                    console.log(res)
+                })
             }
             return {
-                userName,
-                password,
+                LoginInfo,
                 LoginType,
                 HandleLogin,
             }

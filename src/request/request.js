@@ -1,20 +1,27 @@
 import axios from "axios"
 
-const sevice =  axios.create({
-    baseURL:`http://localhost:8080/`
+export function request(req){
+  const sevice =  axios.create({
+    baseURL:`/api`
 })
 
-sevice.interceptors.request.use(req => {
+sevice.interceptors.request.use(
+    req => {
+        console.log(req)
     let token = localStorage.getItem('token');
     if(token){
-        req.headers[''];
+        req.headers['token']=token;
     }
     return req;
 })
 
 sevice.interceptors.response.use(res =>{
-    console.log("响应：：："+res)
+    //console.log("响应：：："+res)
     //if(res.)
+},
+err => {
+    console.log(err)
 })
 
-export default sevice
+return sevice()  
+}
