@@ -1,9 +1,9 @@
-import { request } from "./request";
+import request from "./request";
 
-export function Login(params){
+export function login(data){
     return request({
-        url:'/auth/login',
-        method:'post',
-        params:params
+        url: 'auth/login',
+        method: 'post',
+        data: data
     })
 }
