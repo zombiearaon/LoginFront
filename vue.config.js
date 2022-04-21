@@ -1,5 +1,6 @@
 module.exports = {
     devServer:{
+        port:8000,
         proxy:{
             '/api': {
                 //要访问的跨域的域名
