@@ -1,22 +1,18 @@
 <template>
-    <div v-if="LoginControl.LoginType">
+    <el-form v-if="LoginControl.LoginType">
         <h1>登录</h1>
-        <input v-model="LoginInfo.userName" placeholder="请输入登录用户名">
-        <br>
-        <input type="password" v-model="LoginInfo.password" placeholder="请输入登录密码">
-        <br>
-        <button @click="HandleLogin(LoginInfo)">登录</button>
+        <el-input v-model="LoginInfo.userName" placeholder="请输入登录用户名"></el-input>
+        <el-input type="password" v-model="LoginInfo.password" placeholder="请输入登录密码"></el-input>
+        <el-button type="primary" @click="HandleLogin(LoginInfo)">登录</el-button>
         
-    </div>
-    <div v-else>
+    </el-form>
+    <el-form v-else>
         <h1>注册</h1>
-        <input v-model="RegistInfo.userName" placeholder="请输入注册用户名">
-        <br>
-        <input type="password" v-model="RegistInfo.password" placeholder="请输入注册密码">
-        <br>
-        <button @click="HandleRegist(RegistInfo)">注册</button>
-    </div>
-    <button @click="ChangeType">{{LoginControl.HandleType}}</button>
+        <el-input v-model="RegistInfo.userName" placeholder="请输入注册用户名"></el-input>
+        <el-input type="password" v-model="RegistInfo.password" placeholder="请输入注册密码"></el-input>
+        <el-button type="primary" @click="HandleRegist(RegistInfo)">注册</el-button>
+    </el-form>
+    <el-button type="primary" @click="ChangeType">{{LoginControl.HandleType}}</el-button>
 </template>
 
 <script>
